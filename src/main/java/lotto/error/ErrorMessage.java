@@ -1,6 +1,6 @@
 package lotto.error;
 
-public enum ErrorCode {
+public enum ErrorMessage {
     INVALID_INPUT("잘못된 입력값입니다."),
     INDIVISIBLE_LOTTO_PRICE("1000원으로 나누어 떨어지지 않는 로또 가격입니다."),
     ZERO_OR_NEGATIVE_LOTTO_PRICE("로또 가격은 0보다 커야 합니다."),
@@ -13,7 +13,7 @@ public enum ErrorCode {
 
     private final String errorMessage;
 
-    ErrorCode(String errorMessage) {
+    ErrorMessage(String errorMessage) {
         this.errorMessage = errorMessage;
     }
 

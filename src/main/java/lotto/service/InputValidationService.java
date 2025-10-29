@@ -1,7 +1,7 @@
 package lotto.service;
 
 import java.util.List;
-import lotto.error.ErrorCode;
+import lotto.error.ErrorMessage;
 
 public class InputValidationService {
     private static final Integer MAX_LOTTO_PRICE = 100000;
@@ -35,49 +35,49 @@ public class InputValidationService {
 
     private void validateDivisibility(Integer lottoPrice) {
         if (isDivisible(lottoPrice)) {
-            throw new IllegalArgumentException(ErrorCode.INDIVISIBLE_LOTTO_PRICE.getErrorMessage());
+            throw new IllegalArgumentException(ErrorMessage.INDIVISIBLE_LOTTO_PRICE.getErrorMessage());
         }
     }
 
     private void validateZeroOrNegative(Integer lottoPrice) {
         if (isZeroOrNegative(lottoPrice)) {
-            throw new IllegalArgumentException(ErrorCode.ZERO_OR_NEGATIVE_LOTTO_PRICE.getErrorMessage());
+            throw new IllegalArgumentException(ErrorMessage.ZERO_OR_NEGATIVE_LOTTO_PRICE.getErrorMessage());
         }
     }
 
     private void validateMaximum(Integer lottoPrice) {
         if (isOverMaximum(lottoPrice)) {
-            throw new IllegalArgumentException(ErrorCode.OVER_MAXIMUM_LOTTO_PRICE.getErrorMessage());
+            throw new IllegalArgumentException(ErrorMessage.OVER_MAXIMUM_LOTTO_PRICE.getErrorMessage());
         }
     }
 
     private void validateRange(List<Integer> winnerNumbers) {
         if (isRangedOut(winnerNumbers)) {
-            throw new IllegalArgumentException(ErrorCode.NOT_RANGED_WINNER_NUMBERS.getErrorMessage());
+            throw new IllegalArgumentException(ErrorMessage.NOT_RANGED_WINNER_NUMBERS.getErrorMessage());
         }
     }
 
     private void validateDuplication(List<Integer> winnerNumbers) {
         if (isDuplicated(winnerNumbers)) {
-            throw new IllegalArgumentException(ErrorCode.DUPLICATED_WINNER_NUMBERS.getErrorMessage());
+            throw new IllegalArgumentException(ErrorMessage.DUPLICATED_WINNER_NUMBERS.getErrorMessage());
         }
     }
 
     private void validateCount(List<Integer> winnerNumbers) {
         if (isCorrectCount(winnerNumbers)) {
-            throw new IllegalArgumentException(ErrorCode.NOT_SIX_WINNER_NUMBERS.getErrorMessage());
+            throw new IllegalArgumentException(ErrorMessage.NOT_SIX_WINNER_NUMBERS.getErrorMessage());
         }
     }
 
     private void validateRange(Integer bonusNumber) {
         if (isRangedOut(bonusNumber)) {
-            throw new IllegalArgumentException(ErrorCode.NOT_RANGED_BONUS_NUMBER.getErrorMessage());
+            throw new IllegalArgumentException(ErrorMessage.NOT_RANGED_BONUS_NUMBER.getErrorMessage());
         }
     }
 
     private void validateDuplication(List<Integer> winnerNumbers, Integer bonusNumber) {
         if (isDuplicated(winnerNumbers, bonusNumber)) {
-            throw new IllegalArgumentException(ErrorCode.DUPLICATED_BONUS_NUMBER.getErrorMessage());
+            throw new IllegalArgumentException(ErrorMessage.DUPLICATED_BONUS_NUMBER.getErrorMessage());
         }
     }
 

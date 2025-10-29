@@ -2,14 +2,14 @@ package lotto.utils;
 
 import java.util.Arrays;
 import java.util.List;
-import lotto.error.ErrorCode;
+import lotto.error.ErrorMessage;
 
 public class LottoNumberConverter {
     public static Integer parseStringToInteger(String input) {
         try {
             return Integer.parseInt(input);
         } catch (NumberFormatException e) {
-            throw new IllegalArgumentException(ErrorCode.INVALID_INPUT.getErrorMessage());
+            throw new IllegalArgumentException(ErrorMessage.INVALID_INPUT.getErrorMessage());
         }
     }
 
@@ -20,7 +20,7 @@ public class LottoNumberConverter {
                     .map(Integer::parseInt)
                     .toList();
         } catch (NumberFormatException | NullPointerException e) {
-            throw new IllegalArgumentException(ErrorCode.INVALID_INPUT.getErrorMessage());
+            throw new IllegalArgumentException(ErrorMessage.INVALID_INPUT.getErrorMessage());
         }
     }
 }

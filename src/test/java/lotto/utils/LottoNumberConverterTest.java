@@ -4,7 +4,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 import java.util.List;
-import lotto.error.ErrorCode;
+import lotto.error.ErrorMessage;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -36,7 +36,7 @@ class LottoNumberConverterTest {
         //when & then
         assertThatThrownBy(() -> LottoNumberConverter.parseStringToInteger(input))
                 .isInstanceOf(IllegalArgumentException.class)
-                .hasMessageContaining(ErrorCode.INVALID_INPUT.getErrorMessage());
+                .hasMessageContaining(ErrorMessage.INVALID_INPUT.getErrorMessage());
     }
 
     @Test
@@ -59,7 +59,7 @@ class LottoNumberConverterTest {
         //when & then
         assertThatThrownBy(() -> LottoNumberConverter.splitStringToIntegerList(input, delimiter))
                 .isInstanceOf(IllegalArgumentException.class)
-                .hasMessageContaining(ErrorCode.INVALID_INPUT.getErrorMessage());
+                .hasMessageContaining(ErrorMessage.INVALID_INPUT.getErrorMessage());
     }
 
 }

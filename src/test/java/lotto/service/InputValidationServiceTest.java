@@ -5,7 +5,7 @@ import static org.assertj.core.api.Assertions.assertThatCode;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 import java.util.List;
-import lotto.error.ErrorCode;
+import lotto.error.ErrorMessage;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -39,7 +39,7 @@ class InputValidationServiceTest {
         //when & then
         assertThatThrownBy(() -> inputValidationService.validateLottoPriceAndReturnCount(lottoPrice))
                 .isInstanceOf(IllegalArgumentException.class)
-                .hasMessageContaining(ErrorCode.INDIVISIBLE_LOTTO_PRICE.getErrorMessage());
+                .hasMessageContaining(ErrorMessage.INDIVISIBLE_LOTTO_PRICE.getErrorMessage());
     }
 
     @ParameterizedTest
@@ -49,7 +49,7 @@ class InputValidationServiceTest {
         //when & then
         assertThatThrownBy(() -> inputValidationService.validateLottoPriceAndReturnCount(lottoPrice))
                 .isInstanceOf(IllegalArgumentException.class)
-                .hasMessageContaining(ErrorCode.ZERO_OR_NEGATIVE_LOTTO_PRICE.getErrorMessage());
+                .hasMessageContaining(ErrorMessage.ZERO_OR_NEGATIVE_LOTTO_PRICE.getErrorMessage());
     }
 
     @ParameterizedTest
@@ -59,7 +59,7 @@ class InputValidationServiceTest {
         //when & then
         assertThatThrownBy(() -> inputValidationService.validateLottoPriceAndReturnCount(lottoPrice))
                 .isInstanceOf(IllegalArgumentException.class)
-                .hasMessageContaining(ErrorCode.OVER_MAXIMUM_LOTTO_PRICE.getErrorMessage());
+                .hasMessageContaining(ErrorMessage.OVER_MAXIMUM_LOTTO_PRICE.getErrorMessage());
     }
 
     @Test
@@ -80,7 +80,7 @@ class InputValidationServiceTest {
         //when & then
         assertThatThrownBy(() -> inputValidationService.validateWinnerNumbers(winnerNumbers))
                 .isInstanceOf(IllegalArgumentException.class)
-                .hasMessageContaining(ErrorCode.NOT_SIX_WINNER_NUMBERS.getErrorMessage());
+                .hasMessageContaining(ErrorMessage.NOT_SIX_WINNER_NUMBERS.getErrorMessage());
     }
 
     @Test
@@ -91,7 +91,7 @@ class InputValidationServiceTest {
         //when & then
         assertThatThrownBy(() -> inputValidationService.validateWinnerNumbers(winnerNumbers))
                 .isInstanceOf(IllegalArgumentException.class)
-                .hasMessageContaining(ErrorCode.DUPLICATED_WINNER_NUMBERS.getErrorMessage());
+                .hasMessageContaining(ErrorMessage.DUPLICATED_WINNER_NUMBERS.getErrorMessage());
     }
 
     @Test
@@ -102,7 +102,7 @@ class InputValidationServiceTest {
         //when & then
         assertThatThrownBy(() -> inputValidationService.validateWinnerNumbers(winnerNumbers))
                 .isInstanceOf(IllegalArgumentException.class)
-                .hasMessageContaining(ErrorCode.NOT_RANGED_WINNER_NUMBERS.getErrorMessage());
+                .hasMessageContaining(ErrorMessage.NOT_RANGED_WINNER_NUMBERS.getErrorMessage());
     }
 
     @Test
@@ -125,7 +125,7 @@ class InputValidationServiceTest {
         //when & then
         assertThatThrownBy(() -> inputValidationService.validateBonusNumber(winnerNumbers, bonusNumber))
                 .isInstanceOf(IllegalArgumentException.class)
-                .hasMessageContaining(ErrorCode.DUPLICATED_BONUS_NUMBER.getErrorMessage());
+                .hasMessageContaining(ErrorMessage.DUPLICATED_BONUS_NUMBER.getErrorMessage());
     }
 
     @ParameterizedTest
@@ -137,7 +137,7 @@ class InputValidationServiceTest {
         //when & then
         assertThatThrownBy(() -> inputValidationService.validateBonusNumber(winnerNumbers, bonusNumber))
                 .isInstanceOf(IllegalArgumentException.class)
-                .hasMessageContaining(ErrorCode.NOT_RANGED_BONUS_NUMBER.getErrorMessage());
+                .hasMessageContaining(ErrorMessage.NOT_RANGED_BONUS_NUMBER.getErrorMessage());
     }
 
 }
