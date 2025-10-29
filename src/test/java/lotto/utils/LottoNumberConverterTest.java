@@ -53,7 +53,7 @@ class LottoNumberConverterTest {
 
     @ParameterizedTest
     @NullAndEmptySource
-    @ValueSource(strings = {"", "\n", "a ", "\t", "-1.4", "2/3", "-1,1,10, 100, 2000, ", "1,,2,3,4, 5, 6"})
+    @ValueSource(strings = {"", "\n", "a ", "\t", "-1.4", "2/3", "-1,1,10, 100, 2000, ", "1,,2,3,4, 5, 6", "1 6, 3"})
     @DisplayName("에외: 정수가 아니거나 잘못된 형식의 문자열 ")
     void doesNotNumberAndInvalidInputSplitTest(String input) {
         //when & then
