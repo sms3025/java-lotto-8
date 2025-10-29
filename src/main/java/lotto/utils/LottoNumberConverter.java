@@ -15,8 +15,8 @@ public class LottoNumberConverter {
 
     public static List<Integer> splitStringToIntegerList(String input, String delimiter) {
         try {
-            return Arrays.stream(input.replace(" ", "")
-                            .split(delimiter, -1))
+            return Arrays.stream(input.split(delimiter, -1))
+                    .map(String::strip)
                     .map(Integer::parseInt)
                     .toList();
         } catch (NumberFormatException | NullPointerException e) {
