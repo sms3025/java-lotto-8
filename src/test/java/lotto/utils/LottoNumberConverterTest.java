@@ -36,7 +36,7 @@ class LottoNumberConverterTest {
         //when & then
         assertThatThrownBy(() -> LottoNumberConverter.parseStringToInteger(input))
                 .isInstanceOf(IllegalArgumentException.class)
-                .hasMessageContaining(ErrorCode.NOT_INTEGER.getErrorMessage());
+                .hasMessageContaining(ErrorCode.INVALID_INPUT.getErrorMessage());
     }
 
     @Test

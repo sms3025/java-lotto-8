@@ -45,21 +45,21 @@ class InputValidationServiceTest {
     @ParameterizedTest
     @ValueSource(ints = {0, -1000, -100000, -1})
     @DisplayName("예외 : 로또 가격이 0과 같거나 음수인 경우")
-    void overMaximumLottoPriceTest(int lottoPrice) {
-        //when & then
-        assertThatThrownBy(() -> inputValidationService.validateLottoPriceAndReturnCount(lottoPrice))
-                .isInstanceOf(IllegalArgumentException.class)
-                .hasMessageContaining(ErrorCode.OVER_MAXIMUM_LOTTO_PRICE.getErrorMessage());
-    }
-
-    @ParameterizedTest
-    @ValueSource(ints = {100001, 999999, 10000000})
-    @DisplayName("예외 : 로또 가격이 100000원을 넘기는 경우")
     void zeroOrNegativeLottoPriceTest(int lottoPrice) {
         //when & then
         assertThatThrownBy(() -> inputValidationService.validateLottoPriceAndReturnCount(lottoPrice))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining(ErrorCode.ZERO_OR_NEGATIVE_LOTTO_PRICE.getErrorMessage());
+    }
+
+    @ParameterizedTest
+    @ValueSource(ints = {100001, 999999, 10000000})
+    @DisplayName("예외 : 로또 가격이 100000원을 넘기는 경우")
+    void overMaximumLottoPriceTest(int lottoPrice) {
+        //when & then
+        assertThatThrownBy(() -> inputValidationService.validateLottoPriceAndReturnCount(lottoPrice))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining(ErrorCode.OVER_MAXIMUM_LOTTO_PRICE.getErrorMessage());
     }
 
     @Test
