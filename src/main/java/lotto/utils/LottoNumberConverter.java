@@ -14,9 +14,13 @@ public class LottoNumberConverter {
     }
 
     public static List<Integer> splitStringToIntegerList(String input, String delimiter) {
-        return Arrays.stream(input.replace(" ", "")
-                        .split(delimiter, -1))
-                .map(LottoNumberConverter::parseStringToInteger)
-                .toList();
+        try {
+            return Arrays.stream(input.replace(" ", "")
+                            .split(delimiter, -1))
+                    .map(Integer::parseInt)
+                    .toList();
+        } catch (NumberFormatException | NullPointerException e) {
+            throw new IllegalArgumentException(ErrorCode.INVALID_INPUT.getErrorMessage());
+        }
     }
 }
