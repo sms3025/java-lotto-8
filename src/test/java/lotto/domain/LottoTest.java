@@ -1,20 +1,25 @@
 package lotto.domain;
 
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 import java.util.List;
 import lotto.error.ErrorMessage;
-import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 class LottoTest {
     @Test
-    @DisplayName("정상: 일반적인 로또 번호 테스트")
-    void normalLottoNumbersTest() {
-        //when & then
-        Assertions.assertThatCode(() -> new Lotto(List.of(1, 2, 20, 21, 5, 45)))
-                .doesNotThrowAnyException();
+    @DisplayName("정상: 일반적인 로또 번호 입력시 정렬되서 보여주는 테스트")
+    void normalLottoNumbersAndAscendingOrderTest() {
+        //given
+        List<Integer> numbers = List.of(1, 2, 20, 21, 5, 45);
+        List<Integer> expectedNumbers = List.of(1, 2, 5, 20, 21, 45);
+        //when
+        List<Integer> resultNumbers = new Lotto(numbers).getNumbers();
+        //then
+        assertThat(resultNumbers).isEqualTo(expectedNumbers);
+
     }
 
     @Test
