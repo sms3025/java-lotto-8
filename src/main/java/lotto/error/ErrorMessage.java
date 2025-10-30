@@ -9,7 +9,10 @@ public enum ErrorMessage {
     DUPLICATED_WINNER_NUMBERS("중복된 당첨 번호가 있습니다."),
     NOT_RANGED_WINNER_NUMBERS("1 ~ 45 사이의 당첨 번호가 아닙니다."),
     DUPLICATED_BONUS_NUMBER("당첨 번호와 중복된 보너스 번호가 있습니다."),
-    NOT_RANGED_BONUS_NUMBER("1 ~ 45 사이의 보너스 번호가 아닙니다.");
+    NOT_RANGED_BONUS_NUMBER("1 ~ 45 사이의 보너스 번호가 아닙니다."),
+    NOT_SIX_LOTTO_NUMBERS("로또 번호가 6개가 아닙니다."),
+    DUPLICATED_LOTTO_NUMBERS("중복된 로또 번호가 있습니다."),
+    NOT_RANGED_LOTTO_NUMBERS("1 ~ 45 사이의 로또 번호가 아닙니다.");
 
     private final String errorMessage;
 
