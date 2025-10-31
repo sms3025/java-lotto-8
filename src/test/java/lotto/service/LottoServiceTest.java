@@ -35,7 +35,7 @@ class LottoServiceTest {
         //when
         Map<Rank, Integer> resultCount = lottoService.getCountEachRank(lottos, winnerNumbers, bonusNumber);
         // then
-        assertThat(resultCount.get(Rank.FIFTH_PLACE)).isEqualTo(1);
+        assertThat(resultCount.get(Rank.FIRST_PLACE)).isEqualTo(1);
         assertThat(resultCount.get(Rank.SECOND_PLACE)).isEqualTo(1);
         assertThat(resultCount.get(Rank.THIRD_PLACE)).isEqualTo(1);
         assertThat(resultCount.get(Rank.FOURTH_PLACE)).isEqualTo(1);
