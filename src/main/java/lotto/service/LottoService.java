@@ -1,5 +1,6 @@
 package lotto.service;
 
+import java.math.BigDecimal;
 import java.util.EnumMap;
 import java.util.HashSet;
 import java.util.List;
@@ -31,7 +32,7 @@ public class LottoService {
         return null;
     }
 
-    public Double getRateOfReturn(Long totalPrize, Integer lottoPrice) {
+    public BigDecimal getRateOfReturn(Long totalPrize, Integer lottoPrice) {
         return null;
     }
 

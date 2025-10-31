@@ -2,6 +2,7 @@ package lotto.service;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
+import java.math.BigDecimal;
 import java.util.EnumMap;
 import java.util.List;
 import java.util.Map;
@@ -70,10 +71,12 @@ class LottoServiceTest {
             "0, 50000, 0.0"
     })
     @DisplayName("정상: 총 상금과 구매한 가격에 따라서 소수점 둘째자리 에서 반올림한 결과를 계산")
-    void getRateOfReturnTest(Long totalPrize, Integer lottoPrice, Double expectedRate) {
+    void getRateOfReturnTest(Long totalPrize, Integer lottoPrice, Double rate) {
+        //given
+        BigDecimal expectedRate = BigDecimal.valueOf(rate);
         //when
-        Double resultRate = lottoService.getRateOfReturn(totalPrize, lottoPrice);
+        BigDecimal resultRate = lottoService.getRateOfReturn(totalPrize, lottoPrice);
         //then
-        assertThat(expectedRate).isEqualTo(resultRate);
+        assertThat(resultRate).isEqualTo(expectedRate);
     }
 }
