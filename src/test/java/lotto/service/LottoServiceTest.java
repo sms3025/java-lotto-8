@@ -13,6 +13,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
+import org.junit.jupiter.params.provider.ValueSource;
 
 class LottoServiceTest {
     private LottoService lottoService;
@@ -20,6 +21,16 @@ class LottoServiceTest {
     @BeforeEach
     void beforeEach() {
         lottoService = new LottoService();
+    }
+
+    @ParameterizedTest
+    @ValueSource(ints = {1, 8, 10, 50, 100})
+    @DisplayName("정상: 로또 개수에 맞는 랜덤한 로또 생성")
+    void getRandomLottosTest(int lotto) {
+        //when
+        List<Lotto> lottos = lottoService.getRandomLottos(lotto);
+        //then
+        assertThat(lottos.size()).isEqualTo(lotto);
     }
 
     @Test

@@ -19,6 +19,10 @@ public class LottoService {
     private static final Integer PERCENT = 100;
     private static final Integer DECIMAL_PLACE = 1;
 
+    public List<Lotto> getRandomLottos(Integer count) {
+        return null;
+    }
+
     public Map<Rank, Integer> getCountEachRank(List<Lotto> lottos, List<Integer> winnerNumbers, Integer bonusNumber) {
         EnumMap<Rank, Integer> countOfRank = new EnumMap<>(Rank.class);
         initCountOfRank(countOfRank);
