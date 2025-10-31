@@ -2,6 +2,7 @@ package lotto.service;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
+import java.util.EnumMap;
 import java.util.List;
 import java.util.Map;
 import lotto.domain.Lotto;
@@ -9,6 +10,8 @@ import lotto.domain.Rank;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
 
 class LottoServiceTest {
     private LottoService lottoService;
@@ -40,5 +43,37 @@ class LottoServiceTest {
         assertThat(resultCount.get(Rank.THIRD_PLACE)).isEqualTo(1);
         assertThat(resultCount.get(Rank.FOURTH_PLACE)).isEqualTo(1);
         assertThat(resultCount.get(Rank.FIFTH_PLACE)).isEqualTo(1);
+    }
+
+    @Test
+    @DisplayName("정상: 각 Rank마다의 카운드 개수에 따른 총 삼금 계산")
+    void getTotalPrizeTest() {
+        // given
+        EnumMap<Rank, Integer> countOfRank = new EnumMap<>(Rank.class);
+        countOfRank.put(Rank.FIFTH_PLACE, 0);
+        countOfRank.put(Rank.FOURTH_PLACE, 1);
+        countOfRank.put(Rank.THIRD_PLACE, 2);
+        countOfRank.put(Rank.SECOND_PLACE, 3);
+        countOfRank.put(Rank.FIRST_PLACE, 4);
+        Long expectedTotalPrize = 8093050000L;
+        //when
+        Long resultTotalPrize = lottoService.getTotalPrize(countOfRank);
+        // then
+        assertThat(resultTotalPrize).isEqualTo(expectedTotalPrize);
+    }
+
+    @ParameterizedTest
+    @CsvSource({
+            "5000, 3000, 166.7",
+            "1500000, 1000, 150000.0",
+            "1550000, 7000, 22142.9",
+            "0, 50000, 0.0"
+    })
+    @DisplayName("정상: 총 상금과 구매한 가격에 따라서 소수점 둘째자리 에서 반올림한 결과를 계산")
+    void getRateOfReturnTest(Long totalPrize, Integer lottoPrice, Double expectedRate) {
+        //when
+        Double resultRate = lottoService.getRateOfReturn(totalPrize, lottoPrice);
+        //then
+        assertThat(expectedRate).isEqualTo(resultRate);
     }
 }

@@ -27,6 +27,14 @@ public class LottoService {
         return countOfRank;
     }
 
+    public Long getTotalPrize(Map<Rank, Integer> countOfRank) {
+        return null;
+    }
+
+    public Double getRateOfReturn(Long totalPrize, Integer lottoPrice) {
+        return null;
+    }
+
     private void checkRankAndAddCount(Integer bonusNumber, Set<Integer> numberOfWinners, List<Integer> lottoNumbers,
                                       EnumMap<Rank, Integer> countOfRank) {
         Integer matchCount = numberOfWinners.size();
