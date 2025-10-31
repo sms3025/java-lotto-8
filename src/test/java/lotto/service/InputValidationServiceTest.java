@@ -27,7 +27,7 @@ class InputValidationServiceTest {
         Integer lottoPrice = 100000;
         Integer expectedResult = 100;
         //when
-        Integer actualResult = inputValidationService.validateLottoPriceAndReturnCount(lottoPrice);
+        Integer actualResult = inputValidationService.validateLottoPrice(lottoPrice);
         //then
         assertThat(actualResult).isEqualTo(expectedResult);
     }
@@ -37,7 +37,7 @@ class InputValidationServiceTest {
     @DisplayName("예외 : 로또 가격이 1000으로 나누어 떨어지지 않는 경우")
     void indivisibleLottoPriceTest(int lottoPrice) {
         //when & then
-        assertThatThrownBy(() -> inputValidationService.validateLottoPriceAndReturnCount(lottoPrice))
+        assertThatThrownBy(() -> inputValidationService.validateLottoPrice(lottoPrice))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining(ErrorMessage.INDIVISIBLE_LOTTO_PRICE.getErrorMessage());
     }
@@ -47,7 +47,7 @@ class InputValidationServiceTest {
     @DisplayName("예외 : 로또 가격이 0과 같거나 음수인 경우")
     void zeroOrNegativeLottoPriceTest(int lottoPrice) {
         //when & then
-        assertThatThrownBy(() -> inputValidationService.validateLottoPriceAndReturnCount(lottoPrice))
+        assertThatThrownBy(() -> inputValidationService.validateLottoPrice(lottoPrice))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining(ErrorMessage.ZERO_OR_NEGATIVE_LOTTO_PRICE.getErrorMessage());
     }
@@ -57,7 +57,7 @@ class InputValidationServiceTest {
     @DisplayName("예외 : 로또 가격이 100000원을 넘기는 경우")
     void overMaximumLottoPriceTest(int lottoPrice) {
         //when & then
-        assertThatThrownBy(() -> inputValidationService.validateLottoPriceAndReturnCount(lottoPrice))
+        assertThatThrownBy(() -> inputValidationService.validateLottoPrice(lottoPrice))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining(ErrorMessage.OVER_MAXIMUM_LOTTO_PRICE.getErrorMessage());
     }

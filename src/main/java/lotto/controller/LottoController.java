@@ -65,7 +65,7 @@ public class LottoController {
         while (true) {
             try {
                 Integer lottoPrice = LottoNumberConverter.parseStringToInteger(inputView.inputLottoPrice());
-                inputValidationService.validateLottoPriceAndReturnCount(lottoPrice);
+                inputValidationService.validateLottoPrice(lottoPrice);
                 return lottoPrice;
             } catch (IllegalArgumentException e) {
                 outputView.printErrorMessage(e.getMessage());

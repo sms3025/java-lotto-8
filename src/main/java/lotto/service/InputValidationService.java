@@ -11,7 +11,7 @@ public class InputValidationService {
     private static final Integer START_LOTTO_RANGE = 1;
     private static final Integer END_LOTTO_RANGE = 45;
 
-    public void validateLottoPriceAndReturnCount(Integer lottoPrice) {
+    public void validateLottoPrice(Integer lottoPrice) {
         validateMaximum(lottoPrice);
         validateZeroOrNegative(lottoPrice);
         validateDivisibility(lottoPrice);
