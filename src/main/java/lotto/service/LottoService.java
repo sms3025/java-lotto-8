@@ -15,6 +15,7 @@ import lotto.domain.Rank;
 import lotto.utils.RandomNumberGenerator;
 
 public class LottoService {
+    private static final Integer DIVISIBLE_LOTTO_PRICE = 1000;
     private static final Integer LOTTO_NUMBERS_COUNT = 6;
     private static final Integer START_LOTTO_RANGE = 1;
     private static final Integer END_LOTTO_RANGE = 45;
@@ -24,6 +25,10 @@ public class LottoService {
     private static final Integer DIVIDED_DECIMAL_POINT = 20;
     private static final Integer PERCENT = 100;
     private static final Integer DECIMAL_PLACE = 1;
+
+    public Integer getLottoCount(Integer lottoPrice) {
+        return lottoPrice / DIVISIBLE_LOTTO_PRICE;
+    }
 
     public List<Lotto> getRandomLottos(Integer count) {
         List<Lotto> lottos = new ArrayList<>();

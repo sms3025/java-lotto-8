@@ -11,11 +11,10 @@ public class InputValidationService {
     private static final Integer START_LOTTO_RANGE = 1;
     private static final Integer END_LOTTO_RANGE = 45;
 
-    public Integer validateLottoPriceAndReturnCount(Integer lottoPrice) {
+    public void validateLottoPriceAndReturnCount(Integer lottoPrice) {
         validateMaximum(lottoPrice);
         validateZeroOrNegative(lottoPrice);
         validateDivisibility(lottoPrice);
-        return getLottoCount(lottoPrice);
     }
 
     public void validateWinnerNumbers(List<Integer> winnerNumbers) {
@@ -27,10 +26,6 @@ public class InputValidationService {
     public void validateBonusNumber(List<Integer> winnerNumbers, Integer bonusNumber) {
         validateDuplication(winnerNumbers, bonusNumber);
         validateRange(bonusNumber);
-    }
-
-    private int getLottoCount(Integer lottoPrice) {
-        return lottoPrice / DIVISIBLE_LOTTO_PRICE;
     }
 
     private void validateDivisibility(Integer lottoPrice) {
