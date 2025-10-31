@@ -1,6 +1,5 @@
 package lotto.service;
 
-import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatCode;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
@@ -21,15 +20,14 @@ class InputValidationServiceTest {
     }
 
     @Test
-    @DisplayName("정상 : 로또 가격으로 100000원 들어오면 100개 리턴")
+    @DisplayName("정상 : 로또 가격으로 100000원 들어오면 에러가 발생하지 않음")
     void normalLottoPriceTest() {
         //given
         Integer lottoPrice = 100000;
         Integer expectedResult = 100;
-        //when
-        Integer actualResult = inputValidationService.validateLottoPrice(lottoPrice);
-        //then
-        assertThat(actualResult).isEqualTo(expectedResult);
+        //when & then
+        assertThatCode(() -> inputValidationService.validateLottoPrice(lottoPrice))
+                .doesNotThrowAnyException();
     }
 
     @ParameterizedTest

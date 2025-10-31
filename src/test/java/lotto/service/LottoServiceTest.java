@@ -24,6 +24,20 @@ class LottoServiceTest {
     }
 
     @ParameterizedTest
+    @CsvSource({
+            "1000000, 1000",
+            "1000, 1",
+            "50000, 50"
+    })
+    @DisplayName("정상: 로또 개수에 맞는 랜덤한 로또 생성")
+    void getLottoCountTest(int lottoPrice, int exceptedCount) {
+        //when
+        Integer resultCount = lottoService.getLottoCount(lottoPrice);
+        //then
+        assertThat(resultCount).isEqualTo(exceptedCount);
+    }
+
+    @ParameterizedTest
     @ValueSource(ints = {1, 8, 10, 50, 100})
     @DisplayName("정상: 로또 개수에 맞는 랜덤한 로또 생성")
     void getRandomLottosTest(int lotto) {
