@@ -2,6 +2,8 @@ package lotto.service;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.EnumMap;
 import java.util.HashSet;
 import java.util.List;
@@ -10,8 +12,12 @@ import java.util.Optional;
 import java.util.Set;
 import lotto.domain.Lotto;
 import lotto.domain.Rank;
+import lotto.utils.RandomNumberGenerator;
 
 public class LottoService {
+    private static final Integer LOTTO_NUMBERS_COUNT = 6;
+    private static final Integer START_LOTTO_RANGE = 1;
+    private static final Integer END_LOTTO_RANGE = 45;
     private static final Integer INITIAL_COUNT = 0;
     private static final Long INITIAL_PRIZE = 0L;
     private static final Integer ADD_COUNT = 1;
@@ -20,7 +26,13 @@ public class LottoService {
     private static final Integer DECIMAL_PLACE = 1;
 
     public List<Lotto> getRandomLottos(Integer count) {
-        return null;
+        List<Lotto> lottos = new ArrayList<>();
+        for (int startCount = 0; startCount < count; startCount++) {
+            Lotto lotto = new Lotto(RandomNumberGenerator.getRandomUniqueNumberList(START_LOTTO_RANGE, END_LOTTO_RANGE,
+                    LOTTO_NUMBERS_COUNT));
+            lottos.add(lotto);
+        }
+        return Collections.unmodifiableList(lottos);
     }
 
     public Map<Rank, Integer> getCountEachRank(List<Lotto> lottos, List<Integer> winnerNumbers, Integer bonusNumber) {
