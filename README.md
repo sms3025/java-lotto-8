@@ -45,3 +45,16 @@
 - [x]  당첨 내역 출력하기
 - [x]  수익률 출력하기(소수점 둘째 자리에서 반올림)
 - [x]  예외 상황시 에러 문구 출력하기(에러 문구는 “[ERROR]”로 시작해야 한다.”)
+
+## 패키지 구조
+
+<img src="img/lotto_package_structure.png">
+
+- config: 환경 설정과 관련된 폴더 ex) 의존성 주입 설정
+- controller: 외부로 부터 가장 처음으로 요청을 받는 곳
+- domain: 엔티티들을 모아둔 곳 ex) Lotto class, Rank class
+- dto: 외부와 controller 사이에서 데이터를 주고 받기 위함
+- error: 에러 메시지를 모아둔 곳
+- service: 실제 비지니스 로직이 실행되는 곳
+- utils: 범용적으로 사용할 수 있는 곳 ex) RandomNumberGenerator
+- view: 사용자에게 데이터를 입출력 하는 곳
